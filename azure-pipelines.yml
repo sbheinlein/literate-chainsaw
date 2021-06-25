@@ -12,15 +12,16 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: '/'
-      includeRootFolder: false
-      archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      replaceExistingArchive: true
+
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      touch test.txt 
+      
+      "blah blah blah" >> test.txt
